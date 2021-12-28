@@ -1,7 +1,7 @@
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 // Routing
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 // Components
 import Header from "./components/Header";
 import Home from "./components/Home";
@@ -14,7 +14,9 @@ const App = () => {
 
   return (
     <Router>
-      <Header />
+      <Link to={'/'} >
+        <Header />
+      </Link>
       <QueryClientProvider client={queryClient}>
         <Routes>
           <Route path='/' element={<Home />} />

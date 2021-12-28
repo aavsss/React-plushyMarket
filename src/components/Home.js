@@ -9,7 +9,7 @@ import Grid from "./Grid";
 import Product from "./Product";
 import Spinner from "./Spinner";
 // api calls 
-import fetchPlushies from "../api/fetchPlushies";
+import { fetchPlushies } from "../api/PlushyApi";
 
 const Home = () => {
     const { 
@@ -39,6 +39,7 @@ const Home = () => {
                         name={plushy.name}
                         price={plushy.price}
                         imageUrl={NoImage}
+                        clickable={true}
                     />
                 ))}
             </Grid>
