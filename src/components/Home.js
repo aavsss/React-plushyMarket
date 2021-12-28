@@ -7,8 +7,9 @@ import NoImage from "../images/no_image.jpg";
 import HeroImage from "./HeroImage";
 import Grid from "./Grid";
 import Product from "./Product";
+import Spinner from "./Spinner";
 // api calls 
-import fetchPlushies from "../apiCalls/fetchPlushies";
+import fetchPlushies from "../api/fetchPlushies";
 
 const Home = () => {
     const { 
@@ -16,7 +17,16 @@ const Home = () => {
         error, 
         isError, 
         isLoading
-    } = useQuery('plushies', fetchPlushies)
+    } = useQuery('plushies', fetchPlushies);
+
+    // Todo: doesn't work well. has no state
+    if (isLoading) return (
+        <Spinner />
+    )
+
+    if (isError) return (
+        <div> Something went wrong! {error}</div>
+    )
 
     return (
         <>
@@ -25,6 +35,7 @@ const Home = () => {
                 {data.map(plushy => (
                     <Product
                         key={plushy.id}
+                        plushyId={plushy.id}
                         name={plushy.name}
                         price={plushy.price}
                         imageUrl={NoImage}
