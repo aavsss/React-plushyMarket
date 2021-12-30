@@ -26,7 +26,8 @@ const PlushyInfo = ({ plushy, refetch }) => {
         if (data && data.quantity) {
             setQuantity(data.quantity);
         }
-    }, [data])
+        setQuantity(plushy.quantity)
+    }, [data, plushy.quantity])
 
     return (
         <Wrapper>
@@ -35,7 +36,6 @@ const PlushyInfo = ({ plushy, refetch }) => {
                 <Text>
                     <h1>{plushy.name}</h1>
                     <p>{plushy.description}</p>
-
                     <div className="price-title">
                         <div>
                             <h3>PRICE</h3>
