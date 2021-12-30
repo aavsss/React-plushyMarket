@@ -1,20 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 // Components
 import Spinner from './Spinner';
 import PlushyInfo from './PlushyInfo';
-// api Calls
-import { fetchPlushyById } from '../api/PlushyApi';
+// hook 
+import { usePlushyFetchById } from '../hooks/usePlushyFetchById';
 
 const PlushyDetail = () => {
     const { plushyId } = useParams()
+
     const {
         data, 
         error,
         isError,
-        isLoading
-    } = useQuery(['plushy', plushyId], () => fetchPlushyById(plushyId));
+        isLoading,
+        setBought,
+        bought
+    } = usePlushyFetchById(plushyId);
 
     if (isLoading) return (
         <Spinner />
@@ -26,7 +29,11 @@ const PlushyDetail = () => {
 
 
     return (
-        <PlushyInfo plushy={data} />
+        <PlushyInfo 
+            plushy={data}
+            setBought={setBought}
+            bought={bought}
+            />
     );
 };
 

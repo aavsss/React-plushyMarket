@@ -8,8 +8,8 @@ import HeroImage from "./HeroImage";
 import Grid from "./Grid";
 import Product from "./Product";
 import Spinner from "./Spinner";
-// api calls 
-import { fetchPlushies } from "../api/PlushyApi";
+// hooks
+import usePlushiesFetch from "../hooks/usePlushiesFetch";
 
 const Home = () => {
     const { 
@@ -17,9 +17,8 @@ const Home = () => {
         error, 
         isError, 
         isLoading
-    } = useQuery('plushies', fetchPlushies);
+    } = usePlushiesFetch();
 
-    // Todo: doesn't work well. has no state
     if (isLoading) return (
         <Spinner />
     )

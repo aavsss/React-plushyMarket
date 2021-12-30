@@ -4,7 +4,13 @@ import { Link } from "react-router-dom";
 // Styles
 import { Wrapper, Image } from "./Product.styles";
 
-const Product = ({plushyId, name, price, imageUrl, clickable}) => (
+const Product = ({
+    plushyId, 
+    name, 
+    price, 
+    imageUrl, 
+    clickable
+}) => (
     <Wrapper>
         {clickable && 
             <Link to={`/${plushyId}`}>
@@ -12,7 +18,7 @@ const Product = ({plushyId, name, price, imageUrl, clickable}) => (
             </Link>
         }
         <h3>{name}</h3>
-        <h3>{price}</h3>
+        <h3>${price}</h3>
     </Wrapper>
 );
 
