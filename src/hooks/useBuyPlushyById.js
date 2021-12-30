@@ -5,15 +5,13 @@ import { buyPlushyById } from "../api/BuyPlushyApi";
 const useBuyPlushyById = (
     plushyId, 
     amount, 
-    bought, 
-    setBought
+    bought
     ) => {
     const result = useQuery(
         ['boughtPlushy', bought], 
         () => buyPlushyById(plushyId, amount),
-        {enabled: bought}
+        {enabled: false}
     );
-    setBought(false);
     return result;
 };
 

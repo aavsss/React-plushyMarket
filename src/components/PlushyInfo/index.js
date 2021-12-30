@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types"
 // Components
 import Thumb from "../Thumb";
@@ -10,25 +10,23 @@ import NoImage from '../../images/no_image.jpg';
 // Styles
 import { Wrapper, Content, Text } from "./PlushyInfo.styles";
 
-const PlushyInfo = ({ plushy, setBought, bought }) => {
-
-    useEffect(() => {
-        console.log("bought", bought);
-        if ( bought ) {
-
-        }
-    }, [bought]);
+const PlushyInfo = ({ plushy, refetch }) => {
+    const [quantity, setQuantity] = useState(plushy.quantity);
 
     const {
         data,
-        error,
-        isError,
-        isLoading
+        refetch: buyPlushy
     } = useBuyPlushyById(
         plushy.id,
         1, 
-        bought, 
-        setBought);
+        refetch
+    );
+
+    useEffect(() => {
+        if (data && data.quantity) {
+            setQuantity(data.quantity);
+        }
+    }, [data])
 
     return (
         <Wrapper>
@@ -45,10 +43,10 @@ const PlushyInfo = ({ plushy, setBought, bought }) => {
                         </div>
                         <div className="quantity">
                             <h3>QUANTITY</h3>
-                            {plushy.quantity}
+                            {quantity}
                         </div>
                     </div>
-                    <Button text="Buy" callback={() => setBought(true)}/>
+                    <Button text="Buy" callback={buyPlushy}/>
                 </Text>
             </Content>
         </Wrapper>

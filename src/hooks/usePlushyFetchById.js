@@ -4,15 +4,15 @@ import { useQuery } from "react-query";
 import { fetchPlushyById } from "../api/PlushyApi";
 
 export const usePlushyFetchById = (plushyId) => {
-    const [bought, setBought] = useState(false);
 
     const {
         data,
         error,
         isError,
-        isLoading
+        isLoading,
+        refetch
     } = useQuery(
-        ['plushy', bought],
+        'plushy',
         () => fetchPlushyById(plushyId),
     );
 
@@ -21,8 +21,7 @@ export const usePlushyFetchById = (plushyId) => {
         error,
         isError,
         isLoading,
-        setBought,
-        bought
+        refetch
     };
 };
 
