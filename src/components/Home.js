@@ -37,7 +37,7 @@ const Home = () => {
                         plushyId={plushy.id}
                         name={plushy.name}
                         price={plushy.price}
-                        imageUrl={NoImage}
+                        imageUrl={plushy.imageUrl? plushy.imageUrl : NoImage}
                         clickable={true}
                     />
                 ))}

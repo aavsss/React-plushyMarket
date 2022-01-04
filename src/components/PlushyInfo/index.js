@@ -13,26 +13,28 @@ import { Wrapper, Content, Text } from "./PlushyInfo.styles";
 const PlushyInfo = ({ plushy, refetch }) => {
     const [quantity, setQuantity] = useState(plushy.quantity);
 
-    const {
-        data,
-        refetch: buyPlushy
-    } = useBuyPlushyById(
+    const { data, refetch: buyPlushy } = useBuyPlushyById(
         plushy.id,
         1, 
         refetch
     );
 
+    // initial 
+    useEffect(() => {
+        setQuantity(plushy.quantity);
+    }, [plushy.quantity]);
+
+    // after users bought the item
     useEffect(() => {
         if (data && data.quantity) {
             setQuantity(data.quantity);
         }
-        setQuantity(plushy.quantity)
-    }, [data, plushy.quantity])
+    }, [data, plushy.quantity]);
 
     return (
         <Wrapper>
             <Content>
-                <Thumb image={NoImage}/>
+                <Thumb image={plushy.imageUrl? plushy.imageUrl : NoImage} />
                 <Text>
                     <h1>{plushy.name}</h1>
                     <p>{plushy.description}</p>
