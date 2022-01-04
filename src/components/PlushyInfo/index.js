@@ -10,26 +10,15 @@ import NoImage from '../../images/no_image.jpg';
 // Styles
 import { Wrapper, Content, Text } from "./PlushyInfo.styles";
 
-const PlushyInfo = ({ plushy, refetch }) => {
+const PlushyInfo = ({ plushy }) => {
     const [quantity, setQuantity] = useState(plushy.quantity);
 
-    const { data, refetch: buyPlushy } = useBuyPlushyById(
-        plushy.id,
-        1, 
-        refetch
-    );
+    const boughtPlushy = useBuyPlushyById(plushy.id, 1);
 
     // initial 
     useEffect(() => {
         setQuantity(plushy.quantity);
     }, [plushy.quantity]);
-
-    // after users bought the item
-    useEffect(() => {
-        if (data && data.quantity) {
-            setQuantity(data.quantity);
-        }
-    }, [data, plushy.quantity]);
 
     return (
         <Wrapper>
@@ -48,7 +37,7 @@ const PlushyInfo = ({ plushy, refetch }) => {
                             {quantity}
                         </div>
                     </div>
-                    <Button text="Buy" callback={buyPlushy}/>
+                    <Button text="Buy" callback={() => boughtPlushy.mutate()}/>
                 </Text>
             </Content>
         </Wrapper>

@@ -29,7 +29,7 @@ const Home = () => {
 
     return (
         <>
-            <HeroImage image={HeroImg}/>
+            <HeroImage image={data? data[0].imageUrl : HeroImg}/>
             <Grid header="Plushies">
                 {data.map(plushy => (
                     <Product

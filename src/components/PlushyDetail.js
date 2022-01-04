@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 // Components
 import Spinner from './Spinner';
@@ -7,14 +7,13 @@ import PlushyInfo from './PlushyInfo';
 import { usePlushyFetchById } from '../hooks/usePlushyFetchById';
 
 const PlushyDetail = () => {
-    const { plushyId } = useParams()
+    const { plushyId } = useParams();
 
     const {
         data, 
         error,
         isError,
         isLoading,
-        refetch: refetchPlushy
     } = usePlushyFetchById(plushyId);
 
     if (isLoading) return (
@@ -29,7 +28,6 @@ const PlushyDetail = () => {
     return (
         <PlushyInfo 
             plushy={data}
-            refetch={refetchPlushy}
             />
     );
 };

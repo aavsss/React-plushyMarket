@@ -1,18 +1,19 @@
-import { useQuery } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 // api
 import { buyPlushyById } from "../api/BuyPlushyApi";
 
-const useBuyPlushyById = (
-    plushyId, 
-    amount, 
-    bought
-    ) => {
-    const result = useQuery(
-        ['boughtPlushy', bought], 
+const useBuyPlushyById = (plushyId, amount) => {
+    
+    const queryClient = useQueryClient();
+
+    return useMutation(
         () => buyPlushyById(plushyId, amount),
-        {enabled: false}
-    );
-    return result;
+        {
+            onSuccess: (plushy) => {
+                queryClient.setQueryData(['plushy'], plushy)
+            }
+        }
+    )
 };
 
 export default useBuyPlushyById;
