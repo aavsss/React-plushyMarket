@@ -5,6 +5,7 @@ import Spinner from './Spinner';
 import PlushyInfo from './PlushyInfo';
 // hook 
 import { usePlushyFetchById } from '../hooks/usePlushyFetchById';
+import useBuyPlushyById from '../hooks/useBuyPlushyById';
 
 const PlushyDetail = () => {
     const { plushyId } = useParams();
@@ -15,6 +16,8 @@ const PlushyDetail = () => {
         isError,
         isLoading,
     } = usePlushyFetchById(plushyId);
+
+    const boughtPlushy = useBuyPlushyById(plushyId, 1);
 
     if (isLoading) return (
         <Spinner />
@@ -28,6 +31,7 @@ const PlushyDetail = () => {
     return (
         <PlushyInfo 
             plushy={data}
+            buyPlushy={boughtPlushy}
             />
     );
 };

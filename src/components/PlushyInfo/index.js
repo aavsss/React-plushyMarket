@@ -10,15 +10,7 @@ import NoImage from '../../images/no_image.jpg';
 // Styles
 import { Wrapper, Content, Text } from "./PlushyInfo.styles";
 
-const PlushyInfo = ({ plushy }) => {
-    const [quantity, setQuantity] = useState(plushy.quantity);
-
-    const boughtPlushy = useBuyPlushyById(plushy.id, 1);
-
-    // initial 
-    useEffect(() => {
-        setQuantity(plushy.quantity);
-    }, [plushy.quantity]);
+const PlushyInfo = ({ plushy, buyPlushy }) => {
 
     return (
         <Wrapper>
@@ -34,10 +26,10 @@ const PlushyInfo = ({ plushy }) => {
                         </div>
                         <div className="quantity">
                             <h3>QUANTITY</h3>
-                            {quantity}
+                            {plushy.quantity}
                         </div>
                     </div>
-                    <Button text="Buy" callback={() => boughtPlushy.mutate()}/>
+                    <Button text="Buy" callback={() => buyPlushy.mutate()}/>
                 </Text>
             </Content>
         </Wrapper>
