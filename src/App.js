@@ -14,9 +14,7 @@ const App = () => {
 
   return (
     <Router>
-      <Link to={'/'} >
-        <Header />
-      </Link>
+      <Header />
       <QueryClientProvider client={queryClient}>
         <Routes>
           <Route path='/' element={<Home />} />

@@ -3,8 +3,6 @@ import PropTypes from "prop-types"
 // Components
 import Thumb from "../Thumb";
 import Button from "../Button";
-// Hooks
-import useBuyPlushyById from "../../hooks/useBuyPlushyById";
 // Image
 import NoImage from '../../images/no_image.jpg';
 // Styles
