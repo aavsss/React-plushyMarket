@@ -10,7 +10,7 @@ import { Wrapper, Content, Text } from "./PlushyInfo.styles";
 // Redux
 import { useDispatch } from "react-redux";
 // Slice
-import { increment } from "../../features/cart/cartSlice";
+import { addItemNumToCart } from "../../features/cart/cartSlice";
 
 const PlushyInfo = ({ plushy, buyPlushy }) => {
     const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const PlushyInfo = ({ plushy, buyPlushy }) => {
                             {plushy.quantity}
                         </div>
                     </div>
-                    <Button text="Buy" callback={() => buyPlushy.mutate()}/>
+                    <Button text="Buy" callback={() => dispatch(addItemNumToCart(plushy.id))}/>
                 </Text>
             </Content>
         </Wrapper>
