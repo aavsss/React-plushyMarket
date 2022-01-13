@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types"
 // Components
 import Thumb from "../Thumb";
@@ -7,8 +7,13 @@ import Button from "../Button";
 import NoImage from '../../images/no_image.jpg';
 // Styles
 import { Wrapper, Content, Text } from "./PlushyInfo.styles";
+// Redux
+import { useDispatch } from "react-redux";
+// Slice
+import { increment } from "../../features/cart/cartSlice";
 
 const PlushyInfo = ({ plushy, buyPlushy }) => {
+    const dispatch = useDispatch();
 
     return (
         <Wrapper>

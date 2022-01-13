@@ -1,5 +1,4 @@
 import React from "react";
-import { useQuery } from "react-query";
 // Images
 import HeroImg from "../images/bear.jpg";
 import NoImage from "../images/no_image.jpg";
@@ -26,7 +25,7 @@ const Home = () => {
     if (isError) return (
         <div> Something went wrong! {error}</div>
     )
-
+				
     return (
         <>
             <HeroImage image={data? data[0].imageUrl : HeroImg}/>

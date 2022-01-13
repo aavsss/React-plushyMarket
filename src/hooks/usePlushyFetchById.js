@@ -21,4 +21,3 @@ export const usePlushyFetchById = (plushyId) => {
         isLoading,
     };
 };
-
