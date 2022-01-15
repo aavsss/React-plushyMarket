@@ -16,8 +16,8 @@ export const fetchInitialCartNumber = createAsyncThunk(
 
 export const addItemNumToCart = createAsyncThunk(
 	'cart/addItemToCart',
-	async(productId) => {
-		return addItemToCart(productId);
+	async({id, quantity}) => {
+		return addItemToCart(id, quantity);
 	}
 )
 

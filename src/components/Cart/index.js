@@ -14,7 +14,6 @@ const Cart = () => {
   const cartCount = useSelector(selectCart);
   const dispatch = useDispatch();
   // crashes the app currently
-  // dispatch(fetchInitialCartNumber()); 
   useEffect(() => {
     dispatch(fetchInitialCartNumber());
   }, [dispatch]);

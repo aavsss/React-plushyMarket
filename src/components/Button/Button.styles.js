@@ -4,7 +4,7 @@ export const Wrapper = styled.button`
     display: block;
     background: var(--darkGrey);
     width: 75px;
-    min-width: 75px;
+    min-width: 125px;
     height: 30px;
     border-radius: 30px;
     color: var(--white);

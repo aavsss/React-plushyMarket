@@ -7,14 +7,14 @@ export const fetchInitialNumber = async() => {
     return data;
 };
 
-export const addItemToCart = async(productId) => {
+export const addItemToCart = async(productId, quantity) => {
     const { data } = await axios.post(
-        'http://localhost:8080/api/v1/plushy/cart', 
+        'http://localhost:8080/api/v1/plushy/cart/set', 
         {
-            userId: 4,
-            productId
+            userId: 1,
+            productId,
+            quantity: quantity
         } 
     );
-    console.log("data", data);
     return data;
 }

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types"
 // Components
 import Thumb from "../Thumb";
 import Button from "../Button";
+import NumberPicker from "react-widgets/NumberPicker";
 // Image
 import NoImage from '../../images/no_image.jpg';
 // Styles
@@ -14,6 +15,7 @@ import { addItemNumToCart } from "../../features/cart/cartSlice";
 
 const PlushyInfo = ({ plushy, buyPlushy }) => {
     const dispatch = useDispatch();
+    const [quantity, setQuantity] = useState(3);
 
     return (
         <Wrapper>
@@ -29,10 +31,19 @@ const PlushyInfo = ({ plushy, buyPlushy }) => {
                         </div>
                         <div className="quantity">
                             <h3>QUANTITY</h3>
-                            {plushy.quantity}
+                            <NumberPicker 
+                                defaultValue={quantity} 
+                                onChange={(value) => setQuantity(value)}
+                            />
                         </div>
                     </div>
-                    <Button text="Buy" callback={() => dispatch(addItemNumToCart(plushy.id))}/>
+                    <Button text="Add to Cart" 
+                        callback={() => dispatch(addItemNumToCart(
+                            {
+                                id: plushy.id,
+                                quantity
+                            }
+                    ))}/>
                 </Text>
             </Content>
         </Wrapper>
