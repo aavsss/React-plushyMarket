@@ -2,7 +2,7 @@ import Button from '@mui/material/Button';
 // Stytes
 import { Wrapper } from './CartItem.styles';
 
-const CartItem = ({ item }) => (
+const CartItem = ({ item, addToCart, subtractFromCart }) => (
   <Wrapper>
       <div>
         <h3>{item.name}</h3>
@@ -15,6 +15,7 @@ const CartItem = ({ item }) => (
             size='small'
             disableElevation
             variant='contained'
+            onClick={() => subtractFromCart(item)}
           >
             -
           </Button>
@@ -23,6 +24,7 @@ const CartItem = ({ item }) => (
             size='small'
             disableElevation
             variant='contained'
+            onClick={() => addToCart(item)}
           >
             + 
           </Button>
