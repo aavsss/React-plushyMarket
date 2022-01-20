@@ -2,8 +2,9 @@ import Button from '@mui/material/Button';
 // Stytes
 import { Wrapper } from './CartItem.styles';
 
-const CartItem = ({ item, addToCart, subtractFromCart }) => (
-  <Wrapper>
+const CartItem = ({ item, addToCart, subtractFromCart }) => {
+  return (
+    <Wrapper>
       <div>
         <h3>{item.name}</h3>
         <div className='information'>
@@ -30,8 +31,9 @@ const CartItem = ({ item, addToCart, subtractFromCart }) => (
           </Button>
         </div>
       </div>
-    {/* Img */}
+    <img src={item.imageUrl} alt={item.name} />
   </Wrapper>
-);
+  )
+};
 
 export default CartItem;

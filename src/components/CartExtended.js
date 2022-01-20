@@ -1,19 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // Components
 import CartHolder from './CartHolder';
+// Hooks
+import useGetItemsInPlushy from './../hooks/useGetItemsInPlushy';
 
 const CartExtended = () => {
-  const [cartItems, setCartItems] = useState([{
-    id: 3,
-    name: "Kakashi",
-    price: 34,
-    quantity: 10
-  }, {
-    id: 4,
-    name: "Orochi",
-    price: 45,
-    quantity: 13
-  }]);
+  const [cartItems, setCartItems] = useState([]);
+
+  const { 
+    data
+  } = useGetItemsInPlushy();
+
+  useEffect(() => {
+    if (data) {
+      setCartItems(data);
+    }
+  }, [data, setCartItems]);
 
   const handleAddToCart = (selectedItem) => {
     setCartItems(prev => {
@@ -48,6 +50,7 @@ const CartExtended = () => {
   return(
     <CartHolder 
       cartItems={cartItems}
+      setCartItems={setCartItems}
       addToCart={handleAddToCart}
       subtractFromCart={handleSubtractFromCart}
     />

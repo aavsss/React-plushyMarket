@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   selectCart
 } from "../../features/cart/cartSlice";
+import { Link } from "react-router-dom";
 // Components
 import { Wrapper, Content, LogoImg } from './Cart.styles';
 // Images
@@ -19,12 +20,14 @@ const Cart = () => {
   }, [dispatch]);
 
   return (
-    <Wrapper>
-      <Content>
-        <LogoImg src={CartLogo} />
-        {cartCount}
-      </Content>
-    </Wrapper>
+    <Link to={'/cart'} >
+      <Wrapper>
+        <Content>
+          <LogoImg src={CartLogo} />
+          {cartCount}
+        </Content>
+      </Wrapper>
+    </Link>
   )
 };
 

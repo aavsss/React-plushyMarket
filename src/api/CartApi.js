@@ -18,3 +18,10 @@ export const addItemToCart = async(productId, quantity) => {
     );
     return data;
 }
+
+export const getPlushiesInCart = async(userId) => {
+    const { data } = await axios.get(
+        'http://localhost:8080/api/v1/plushy/cart/items'
+    );
+    return data;
+}

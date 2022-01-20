@@ -2,17 +2,17 @@ import { useMutation, useQueryClient } from "react-query";
 // api
 import { buyPlushyById } from "../api/BuyPlushyApi";
 
-const useBuyPlushyById = (plushyId, amount) => {
-    
-    const queryClient = useQueryClient();
+const useBuyPlushyById = (plushiesIdToBuy) => {
+  
+  const queryClient = useQueryClient();
 
-    return useMutation(() => buyPlushyById(plushyId, amount), 
-            {
-                onSuccess: (plushy) => {
-                    queryClient.setQueryData(['plushy'], plushy)
-            }
-        }
-    )
+  return useMutation(() => buyPlushyById(plushiesIdToBuy), 
+      {
+        onSuccess: (plushies) => {
+          queryClient.setQueryData(['itemsInCart'], plushies)
+      }
+    }
+  )
 };
 
 export default useBuyPlushyById;
