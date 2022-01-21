@@ -3,7 +3,8 @@ import { useQuery } from "react-query";
 import { fetchPlushies } from "../api/PlushyApi";
 
 const usePlushiesFetch = () => {
-    return useQuery("plushies", fetchPlushies);
+    const response = useQuery("plushies", fetchPlushies);
+    return response;
 }
 
 export default usePlushiesFetch;

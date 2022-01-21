@@ -14,6 +14,7 @@ const CartExtended = () => {
   useEffect(() => {
     if (data) {
       setCartItems(data);
+      console.log("data", data);
     }
   }, [data, setCartItems]);
 
@@ -38,6 +39,7 @@ const CartExtended = () => {
       if (isItemInCart) {
         return prev.map(item => {
           if (item.id === selectedItem.id) {
+            if (item.quantity === 1) return item;
             return {...item, quantity: item.quantity - 1}
           } else {
             return item;

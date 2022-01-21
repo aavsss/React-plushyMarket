@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 // Components
 import Thumb from "../Thumb";
 import Button from "../Button";
-import NumberPicker from "react-widgets/NumberPicker";
+import { TextField } from "@mui/material";
 // Image
 import NoImage from '../../images/no_image.jpg';
 // Styles
@@ -13,9 +13,9 @@ import { useDispatch } from "react-redux";
 // Slice
 import { addItemNumToCart } from "../../features/cart/cartSlice";
 
-const PlushyInfo = ({ plushy, buyPlushy }) => {
+const PlushyInfo = ({ plushy }) => {
     const dispatch = useDispatch();
-    const [quantity, setQuantity] = useState(3);
+    const [quantity, setQuantity] = useState(1);
 
     return (
         <Wrapper>
@@ -31,9 +31,15 @@ const PlushyInfo = ({ plushy, buyPlushy }) => {
                         </div>
                         <div className="quantity">
                             <h3>QUANTITY</h3>
-                            <NumberPicker 
-                                defaultValue={quantity} 
-                                onChange={(value) => setQuantity(value)}
+                            <TextField
+                                id="outlined-number"
+                                type="number"
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                                defaultValue={1}
+                                size="small"
+                                onChange={(event) => setQuantity(event.target.value)}
                             />
                         </div>
                     </div>

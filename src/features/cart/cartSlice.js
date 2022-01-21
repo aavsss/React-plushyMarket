@@ -30,7 +30,10 @@ export const cartSlice = createSlice({
 		},
 		decrement: (state) => {
 			state.value -= 1
-		},	
+		},
+		setEmpty: (state) => {
+			state.value = 0
+		},
 	},
 	extraReducers: (builder) => {
 		builder
@@ -39,7 +42,7 @@ export const cartSlice = createSlice({
 			})
 			.addCase(fetchInitialCartNumber.fulfilled, (state, action) => {
 				state.status = 'idle';
-				state.value += action.payload;
+				state.value = action.payload;
 			});
 		
 		builder
@@ -53,7 +56,7 @@ export const cartSlice = createSlice({
 	},
 });
 
-export const { increment, decrement } = cartSlice.actions;
+export const { increment, decrement, setEmpty } = cartSlice.actions;
 
 export const selectCart = (state) => state.cart.value;
 

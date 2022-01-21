@@ -4,6 +4,10 @@ import { Wrapper } from "./CartHolder.styles";
 import Button from "../Button";
 // Hooks
 import useBuyPlushyById from './../../hooks/useBuyPlushyById';
+// Redux
+import { useDispatch } from 'react-redux';
+// Slice 
+import { setEmpty } from "../../features/cart/cartSlice";
 
 const CartHolder = ({ cartItems, setCartItems, addToCart, subtractFromCart }) => {
   const calculateTotal = (items) => 
@@ -20,7 +24,10 @@ const CartHolder = ({ cartItems, setCartItems, addToCart, subtractFromCart }) =>
     return plushiesToBuy;
   }
 
+  // mutation
   const mutation = useBuyPlushyById(createPlushiesToBuy());
+  // dipatch for redux
+  const dispatch = useDispatch();
 
   return (
   <Wrapper>
@@ -38,6 +45,7 @@ const CartHolder = ({ cartItems, setCartItems, addToCart, subtractFromCart }) =>
     <Button text="Buy" callback={() => {
       mutation.mutate(createPlushiesToBuy());
       setCartItems([]);
+      dispatch(setEmpty());
     }}/>
   </Wrapper>
   );

@@ -8,6 +8,7 @@ export const fetchInitialNumber = async() => {
 };
 
 export const addItemToCart = async(productId, quantity) => {
+    console.log("quanty", quantity);
     const { data } = await axios.post(
         'http://localhost:8080/api/v1/plushy/cart/set', 
         {
