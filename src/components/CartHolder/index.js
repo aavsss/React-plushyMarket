@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import CartItem from "../CartItem";
 import { Wrapper } from "./CartHolder.styles";
 // Components
@@ -9,21 +10,9 @@ import { useDispatch } from 'react-redux';
 // Slice 
 import { setEmpty } from "../../features/cart/cartSlice";
 
-const CartHolder = ({ cartItems, setCartItems, addToCart, subtractFromCart }) => {
-  const calculateTotal = (items) => 
-    items.reduce((ack, item) => ack + item.price * item.quantity, 0);
-
-  const createPlushiesToBuy = () => {
-    const plushiesToBuy = [];
-    for (let i = 0; i < cartItems.length; i++) {
-      plushiesToBuy.push({
-        id: cartItems[i].id,
-        amount: cartItems[i].quantity
-      });
-    }
-    return plushiesToBuy;
-  }
-
+const CartHolder = (
+  { cartItems, setCartItems, addToCart, subtractFromCart, calculateTotal, createPlushiesToBuy }) => {
+  
   // mutation
   const mutation = useBuyPlushyById(createPlushiesToBuy());
   // dipatch for redux

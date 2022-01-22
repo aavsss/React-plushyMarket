@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 // Styles
 import { Wrapper } from "./Button.styles";
 
-const Button = ({ text, callback }) => (
-    <Wrapper type="button" onClick={callback}>
+const Button = ({ text, callback, disabled }) => (
+    <Wrapper type="button" disabled={disabled} onClick={callback}>
         {text}
     </Wrapper>
 )

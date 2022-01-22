@@ -2,14 +2,14 @@ import Button from '@mui/material/Button';
 // Stytes
 import { Wrapper } from './CartItem.styles';
 
-const CartItem = ({ item, addToCart, subtractFromCart }) => {
+const CartItem = ({ item, addToCart, subtractFromCart}) => {
   return (
     <Wrapper>
       <div>
         <h3>{item.name}</h3>
         <div className='information'>
           <p>Price: ${item.price}</p>
-          <p>Total: ${(item.quantity * item.price).toFixed(2)}</p>
+          <p>Total: ${(item.userSelectedQuantity * item.price).toFixed(2)}</p>
         </div>
         <div className='buttons'>
           <Button
@@ -20,7 +20,7 @@ const CartItem = ({ item, addToCart, subtractFromCart }) => {
           >
             -
           </Button>
-          <p>{item.quantity}</p>
+          <p>{item.userSelectedQuantity}</p>
           <Button
             size='small'
             disableElevation

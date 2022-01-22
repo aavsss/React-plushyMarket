@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 // Components
 import Thumb from "../Thumb";
 import Button from "../Button";
-import { TextField } from "@mui/material";
+import { TextField, Snackbar } from "@mui/material";
 // Image
 import NoImage from '../../images/no_image.jpg';
 // Styles
@@ -16,6 +16,20 @@ import { addItemNumToCart } from "../../features/cart/cartSlice";
 const PlushyInfo = ({ plushy }) => {
     const dispatch = useDispatch();
     const [quantity, setQuantity] = useState(1);
+    const [showSnackbar, setShowSnackbar] = useState(false);
+    const [isAddToCartButtonDisabled, setIsAddToCartButtonDisabled] = useState(false);
+
+    const handleChangeInQuantity = quantity => {
+        console.log(plushy.quantity, quantity)
+        if ( quantity <= plushy.quantity) {
+            setQuantity(quantity);
+            setShowSnackbar(false);
+        } else {
+            setShowSnackbar(true);
+            setIsAddToCartButtonDisabled(true);
+        }
+        
+    };
 
     return (
         <Wrapper>
@@ -39,17 +53,22 @@ const PlushyInfo = ({ plushy }) => {
                                 }}
                                 defaultValue={1}
                                 size="small"
-                                onChange={(event) => setQuantity(event.target.value)}
+                                onChange={(event) => handleChangeInQuantity(event.target.value)}
                             />
                         </div>
                     </div>
-                    <Button text="Add to Cart" 
+                    <Button text="Add to Cart" disabled={isAddToCartButtonDisabled}
                         callback={() => dispatch(addItemNumToCart(
                             {
                                 id: plushy.id,
                                 quantity
                             }
                     ))}/>
+                    <Snackbar 
+                        open={showSnackbar}
+                        message="Max quantity reached"
+                        autoHideDuration={3000}
+                    />
                 </Text>
             </Content>
         </Wrapper>
