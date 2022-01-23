@@ -49,7 +49,7 @@ const CartExtended = () => {
   const handleSubtractFromCart = (selectedItem) => {
     // To remove snack bar
     setShowSnackbar(false);
-    
+
     setCartItems(prev => {
       const isItemInCart = prev.find(item => item.id === selectedItem.id);
       if (isItemInCart) {
@@ -73,7 +73,7 @@ const CartExtended = () => {
     for (let i = 0; i < cartItems.length; i++) {
       plushiesToBuy.push({
         id: cartItems[i].id,
-        amount: cartItems[i].quantity
+        amount: cartItems[i].userSelectedQuantity
       });
     }
     return plushiesToBuy;

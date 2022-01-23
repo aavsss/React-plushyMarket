@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types"
 // Components
 import Thumb from "../Thumb";
@@ -19,16 +19,26 @@ const PlushyInfo = ({ plushy }) => {
     const [showSnackbar, setShowSnackbar] = useState(false);
     const [isAddToCartButtonDisabled, setIsAddToCartButtonDisabled] = useState(false);
 
+    // inital check to see if we have plushies available in the backend 
+    useEffect(() => {
+        if (plushy.quantity - quantity <= 0) {
+            setIsAddToCartButtonDisabled(true);
+            setShowSnackbar(true);
+            return;
+        } 
+        setIsAddToCartButtonDisabled(false);
+        setShowSnackbar(false);
+    }, [plushy.quantity, quantity])
+
     const handleChangeInQuantity = quantity => {
-        console.log(plushy.quantity, quantity)
-        if ( quantity <= plushy.quantity) {
+        if ( plushy.quantity - quantity > 0) {
             setQuantity(quantity);
             setShowSnackbar(false);
+            setIsAddToCartButtonDisabled(false);
         } else {
             setShowSnackbar(true);
             setIsAddToCartButtonDisabled(true);
-        }
-        
+        }     
     };
 
     return (
