@@ -1,4 +1,5 @@
 import React, { useState} from 'react';
+import { Link } from 'react-router-dom';
 // Google components
 import { GoogleLogin } from 'react-google-login';
 // Mui components
@@ -9,24 +10,25 @@ import Button from '../Button';
 // hook
 import useLogin from './useLogin';
 
-const clientId = '131005392241-r1qasqkreekddjnelv37f2srssmce8p9.apps.googleusercontent.com';
-
 const LogIn = () => {
 
   const {
-    email, 
-    password, 
     handleEmailChange, 
-    handlePasswordChange
+    handlePasswordChange,
+    loginMutation
   } = useLogin();
   
   return (
     <Wrapper>
       <h3>Email</h3>
       <TextField onChange={(event) => handleEmailChange(event.target.value)}/>
-      <h3> Password </h3>
+      <h3>Password</h3>
       <TextField onChange={(event) => handlePasswordChange(event.target.value)}/>
-      <Button text='Login' callback={() => console.log(email)} />
+      <Button text='Login' callback={() => loginMutation.mutate()}/>
+      <h5>Don't have an account?</h5>
+      <Link to={'/register'}>
+        <Button text='Register' />
+      </Link>
     </Wrapper>
   )
 };
