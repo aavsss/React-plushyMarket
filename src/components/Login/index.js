@@ -1,34 +1,37 @@
-import React, { useState} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-// Google components
-import { GoogleLogin } from 'react-google-login';
 // Mui components
 import { TextField } from '@mui/material';
 // Custom components
-import { Wrapper } from './Login.styles';
+import { LoginForm, Wrapper, Image } from './Login.styles';
 import Button from '../Button';
+// Images
+import HeroImage from './../../images/bear.jpg';
 // hook
 import useLogin from './useLogin';
 
 const LogIn = () => {
 
   const {
-    handleEmailChange, 
-    handlePasswordChange,
+    handleEmailChange: setEmail, 
+    handlePasswordChange: setPassword,
     loginMutation
   } = useLogin();
   
   return (
     <Wrapper>
+      <Image src={HeroImage} alt="Bear"/>
+      <LoginForm>
       <h3>Email</h3>
-      <TextField onChange={(event) => handleEmailChange(event.target.value)}/>
+      <TextField onChange={(event) => setEmail(event.target.value)}/>
       <h3>Password</h3>
-      <TextField onChange={(event) => handlePasswordChange(event.target.value)}/>
+      <TextField type="password" onChange={(event) => setPassword(event.target.value)}/>
       <Button text='Login' callback={() => loginMutation.mutate()}/>
       <h5>Don't have an account?</h5>
       <Link to={'/register'}>
         <Button text='Register' />
       </Link>
+    </LoginForm>
     </Wrapper>
   )
 };
