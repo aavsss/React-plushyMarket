@@ -3,11 +3,11 @@ import PropTypes from "prop-types"
 // Components
 import Thumb from "../Thumb";
 import Button from "../Button";
-import { TextField, Snackbar } from "@mui/material";
+import { Snackbar } from "@mui/material";
 // Image
 import NoImage from '../../images/no_image.jpg';
 // Styles
-import { Wrapper, Content, Text } from "./PlushyInfo.styles";
+import { Wrapper, Content, Text, StyledTextField } from "./PlushyInfo.styles";
 // Redux
 import { useDispatch } from "react-redux";
 // Slice
@@ -16,6 +16,7 @@ import { addItemNumToCart } from "../../features/cart/cartSlice";
 const PlushyInfo = ({ plushy }) => {
     const dispatch = useDispatch();
     const [quantity, setQuantity] = useState(1);
+    const [price, setPrice] = useState(plushy.price);
     const [showSnackbar, setShowSnackbar] = useState(false);
     const [isAddToCartButtonDisabled, setIsAddToCartButtonDisabled] = useState(false);
 
@@ -39,6 +40,7 @@ const PlushyInfo = ({ plushy }) => {
             setShowSnackbar(true);
             setIsAddToCartButtonDisabled(true);
         }     
+        setPrice(quantity * plushy.price);
     };
 
     return (
@@ -51,15 +53,20 @@ const PlushyInfo = ({ plushy }) => {
                     <div className="price-title">
                         <div>
                             <h3>PRICE</h3>
-                            <div className="price">${plushy.price}</div>
+                            <div className="price">${price}</div>
                         </div>
                         <div className="quantity">
                             <h3>QUANTITY</h3>
-                            <TextField
+                            <StyledTextField
                                 id="outlined-number"
                                 type="number"
                                 InputLabelProps={{
                                     shrink: true,
+                                }}
+                                InputProps={{
+                                    inputProps: {
+                                        min: 1
+                                    }
                                 }}
                                 defaultValue={1}
                                 size="small"

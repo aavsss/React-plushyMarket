@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { TextField } from "@mui/material";
 
 export const Wrapper = styled.div`
     background-size: cover;
@@ -34,7 +35,7 @@ export const Text = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 0;
+        margin-top: 25px;
     }
 
     .quantity {
@@ -51,3 +52,20 @@ export const Text = styled.div`
         }
     }
 `;
+
+export const StyledTextField = styled(TextField)({
+    '& label.Mui-focused': {
+        color: 'green',
+    },
+    '& .MuiInput-underline:after': {
+    borderBottomColor: 'green',
+    },
+    '& .MuiOutlinedInput-root': {
+        '& fieldset': {
+            borderColor: 'white',
+        },
+    },
+    '& input': {
+        color: 'white'
+    },   
+});

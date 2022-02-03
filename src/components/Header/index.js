@@ -10,7 +10,7 @@ import Cart from "../Cart";
 const Header = () => (
     <Wrapper>
         <Content>
-            <Link to={'/'} >
+            <Link to={'/home'} >
               <LogoImg src={HomeLogo} alt='Home-Logo' />
             </Link>
             <h1 className="title">PlushyMarket</h1>
