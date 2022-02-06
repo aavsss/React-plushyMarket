@@ -1,14 +1,15 @@
 import axios from "axios";
+import axiosConfig from "../config/axiosConfig";
 
 export const loginUser = async(email, password) => {
-  const { data } = await axios.post(
+  const response = await axiosConfig.post(
     'http://localhost:8080/api/v1/login', {
       email, 
       password
     }
   );
-  console.log(data);
-  return data;
+  console.log(response);
+  return response.data;
 };
 
 export const registerUser = async(email, password) => {
@@ -16,6 +17,8 @@ export const registerUser = async(email, password) => {
     'http://localhost:8080/api/v1/register', {
       email, 
       password
+    }, {
+      withCredentials: true
     }
   );
   return data;

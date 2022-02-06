@@ -15,7 +15,10 @@ const LogIn = () => {
   const {
     handleEmailChange: setEmail, 
     handlePasswordChange: setPassword,
-    loginMutation
+    loginMutation,
+    registerMutation,
+    getToken,
+    createToken
   } = useLogin();
   
   return (
@@ -31,6 +34,7 @@ const LogIn = () => {
       <Link to={'/register'}>
         <Button text='Register' />
       </Link>
+      <Button text='temp Register' callback={() => registerMutation.mutate()}/>
     </LoginForm>
     </Wrapper>
   )

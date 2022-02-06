@@ -3,7 +3,7 @@ import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 
 // api 
-import { loginUser } from "../../api/authenticationApi";
+import { loginUser, registerUser } from "../../api/authenticationApi";
 
 
 const useLogin = () => {
@@ -26,12 +26,13 @@ const useLogin = () => {
     }
   );
 
+  const registerMutation = useMutation(() => registerUser(email, password));
+
   return{
-    email, 
-    password,
     handleEmailChange, 
     handlePasswordChange,
-    loginMutation
+    loginMutation,
+    registerMutation,
   };
 }
 
