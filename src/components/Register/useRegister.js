@@ -3,13 +3,11 @@ import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 
 // api 
-import { loginUser, registerUser } from "../../api/authenticationApi";
+import { registerUser, loginUser } from '../../api/authenticationApi';
 
-
-const useLogin = () => {
+const useRegister = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [openRegister, setOpenRegister] = useState(false);
 
   const navigate = useNavigate();
 
@@ -21,19 +19,17 @@ const useLogin = () => {
     setPassword(password);
   }
 
-  const loginMutation = useMutation(() => loginUser(email, password), 
+  const registerMutation = useMutation(() => registerUser(email, password), 
     {
       onSuccess: () => navigate('/home')
     }
   );
 
-  return{
-    handleEmailChange, 
+  return {
+    handleEmailChange,
     handlePasswordChange,
-    loginMutation,
-    openRegister,
-    setOpenRegister
+    registerMutation
   };
 };
 
-export default useLogin;
+export default useRegister;

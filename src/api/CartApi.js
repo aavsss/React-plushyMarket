@@ -1,16 +1,15 @@
-import axios from 'axios';
+import axiosConfig from '../config/axiosConfig';
 
 export const fetchInitialNumber = async() => {
-    const { data } = await axios.get(
-        'http://localhost:8080/api/v1/plushy/cart/1'
+    const { data } = await axiosConfig.get(
+        '/plushy/cart/1'
     );
     return data;
 };
 
 export const addItemToCart = async(productId, quantity) => {
-    console.log("quanty", quantity);
-    const { data } = await axios.post(
-        'http://localhost:8080/api/v1/plushy/cart/set', 
+    const { data } = await axiosConfig.post(
+        '/plushy/cart/set', 
         {
             userId: 1,
             productId,
@@ -21,8 +20,8 @@ export const addItemToCart = async(productId, quantity) => {
 }
 
 export const getPlushiesInCart = async(userId) => {
-    const { data } = await axios.get(
-        'http://localhost:8080/api/v1/plushy/cart/items'
+    const { data } = await axiosConfig.get(
+        '/plushy/cart/items'
     );
     return data;
 }

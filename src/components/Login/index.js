@@ -5,6 +5,7 @@ import { TextField } from '@mui/material';
 // Custom components
 import { LoginForm, Wrapper, Image } from './Login.styles';
 import Button from '../Button';
+import Register from '../Register';
 // Images
 import HeroImage from './../../images/bear.jpg';
 // hook
@@ -16,9 +17,8 @@ const LogIn = () => {
     handleEmailChange: setEmail, 
     handlePasswordChange: setPassword,
     loginMutation,
-    registerMutation,
-    getToken,
-    createToken
+    openRegister, 
+    setOpenRegister
   } = useLogin();
   
   return (
@@ -31,10 +31,8 @@ const LogIn = () => {
       <TextField type="password" onChange={(event) => setPassword(event.target.value)}/>
       <Button text='Login' callback={() => loginMutation.mutate()}/>
       <h5>Don't have an account?</h5>
-      <Link to={'/register'}>
-        <Button text='Register' />
-      </Link>
-      <Button text='temp Register' callback={() => registerMutation.mutate()}/>
+      <Button text='Register' callback={() => setOpenRegister(true)}/>
+      <Register open={openRegister} handleClose={() => setOpenRegister(false)} />
     </LoginForm>
     </Wrapper>
   )

@@ -1,8 +1,8 @@
-import axios from "axios";
+import axiosConfig from "../config/axiosConfig";
 
 export const buyPlushyById = async(plushyIdsToBuy) => {
-    const { data } = await axios.post(
-        'http://localhost:8080/api/v1/plushy/buy',
+    const { data } = await axiosConfig.post(
+        '/plushy/buy',
         plushyIdsToBuy
     );
     return data;
