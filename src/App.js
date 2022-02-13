@@ -9,6 +9,7 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import PlushyDetail from "./components/PlushyDetail";
 import CartExtended from "./components/CartExtended";
+import SellerHome from "./components/SellerHome";
 // Styles
 import { GlobalStyle } from "./GlobalStyle";
 
@@ -29,6 +30,7 @@ const App = () => {
           <Route path='/' element={<LogIn />} />
           <Route path='/register' element={<Register />} />
           <Route path='/home' element={<Home />} />
+          <Route path="/sellerHome" element={<SellerHome />} />
           <Route path='/:plushyId' element={<PlushyDetail/>} />
           <Route path='/cart' element={<CartExtended />} />
         </Routes>

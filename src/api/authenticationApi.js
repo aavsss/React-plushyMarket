@@ -14,8 +14,26 @@ export const registerUser = async(email, password) => {
   const { data } = await axiosConfig.post(
     '/registration', {
       email, 
+      password,
+    }
+  );
+  return data;
+};
+
+export const registerSeller = async(
+  firstName,
+  lastName,
+  email,
+  password
+) => {
+  const { data } = await axiosConfig.post(
+    '/registrationSeller', {
+      firstName,
+      lastName,
+      email,
       password
     }
   );
   return data;
-}
+};
+

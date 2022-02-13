@@ -3,13 +3,23 @@ import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 
 // api 
-import { registerUser, loginUser } from '../../api/authenticationApi';
+import { registerUser, registerSeller } from '../../api/authenticationApi';
 
 const useRegister = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
   const navigate = useNavigate();
+
+  const handleFirstName = (firstName) => {
+    setFirstName(firstName);
+  };
+
+  const handleLastName = (lastName) => {
+    setLastName(lastName);
+  };
 
   const handleEmailChange = (email) => {
     setEmail(email);
@@ -25,10 +35,19 @@ const useRegister = () => {
     }
   );
 
+  const registerAsSellerMutation = useMutation(() => registerSeller(firstName, lastName, email, password), 
+    {
+      onSuccess: () => navigate('/sellerHome')
+    }
+  );
+
   return {
+    handleFirstName,
+    handleLastName,
     handleEmailChange,
     handlePasswordChange,
-    registerMutation
+    registerMutation,
+    registerAsSellerMutation
   };
 };
 

@@ -16,7 +16,10 @@ const Register = ({ open, handleClose }) => {
   const {
     handleEmailChange: setEmail,
     handlePasswordChange: setPassword, 
-    registerMutation 
+    handleFirstName: setFirstName,
+    handleLastName: setLastName,
+    registerMutation,
+    registerAsSellerMutation
   } = useRegister();
 
   return (
@@ -24,6 +27,24 @@ const Register = ({ open, handleClose }) => {
       <Dialog open={open} onClose={handleClose} fullWidth>
         <DialogTitle>Join us</DialogTitle>
         <DialogContent>
+          <DialogContentText>
+            First Name
+          </DialogContentText>
+          <TextField
+            autoFocus
+            variant="standard"
+            fullWidth
+            onChange={(event) => setFirstName(event.target.value)}
+          />
+          <DialogContentText>
+            Last Name
+          </DialogContentText>
+          <TextField
+            autoFocus
+            variant="standard"
+            fullWidth
+            onChange={(event) => setLastName(event.target.value)}
+          />
           <DialogContentText>
             Email
           </DialogContentText>
@@ -45,6 +66,7 @@ const Register = ({ open, handleClose }) => {
             onChange={(event) => setPassword(event.target.value)}
           />
           <DialogActions>
+            <Button onClick={() => registerAsSellerMutation.mutate()}>Register as Seller</Button>
             <Button onClick={() => registerMutation.mutate()}> Register </Button>
           </DialogActions>
         </DialogContent>
