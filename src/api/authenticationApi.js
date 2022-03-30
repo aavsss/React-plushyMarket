@@ -27,7 +27,7 @@ export const registerSeller = async(
   password
 ) => {
   const { data } = await axiosConfig.post(
-    '/registrationSeller', {
+    '/registration/seller', {
       firstName,
       lastName,
       email,

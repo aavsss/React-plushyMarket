@@ -34,7 +34,7 @@ const App = () => {
           <Route path='/:plushyId' element={<PlushyDetail/>} />
           <Route path='/cart' element={<CartExtended />} />
         </Routes>
-        </QueryClientProvider>
+      </QueryClientProvider>
       <GlobalStyle />
     </Router>
   );

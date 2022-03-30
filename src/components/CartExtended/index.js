@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 // Components
-import CartHolder from './CartHolder';
+import CartHolder from '../CartHolder';
 // Hooks
-import useGetItemsInPlushy from './../hooks/useGetItemsInPlushy';
+import useGetItemsInPlushy from '../../hooks/useGetItemsInPlushy';
 // mui components
 import { Snackbar } from '@mui/material';
 
