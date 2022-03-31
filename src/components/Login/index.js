@@ -25,15 +25,15 @@ const LogIn = () => {
     <Wrapper>
       <Image src={HeroImage} alt="Bear"/>
       <LoginForm>
-      <h3>Email</h3>
-      <TextField onChange={(event) => setEmail(event.target.value)}/>
-      <h3>Password</h3>
-      <TextField type="password" onChange={(event) => setPassword(event.target.value)}/>
-      <Button text='Login' callback={() => loginMutation.mutate()}/>
-      <h5>Don't have an account?</h5>
-      <Button text='Register' callback={() => setOpenRegister(true)}/>
-      <Register open={openRegister} handleClose={() => setOpenRegister(false)} />
-    </LoginForm>
+        <h3>Email</h3>
+        <TextField onChange={(event) => setEmail(event.target.value)}/>
+        <h3>Password</h3>
+        <TextField type="password" onChange={(event) => setPassword(event.target.value)}/>
+        <Button text='Login' callback={() => loginMutation.mutate()}/>
+        <h5>Don't have an account?</h5>
+        <Button text='Register' callback={() => setOpenRegister(true)}/>
+        <Register open={openRegister} handleClose={() => setOpenRegister(false)} />
+      </LoginForm>
     </Wrapper>
   )
 };

@@ -10,6 +10,8 @@ import Home from "./components/Home";
 import PlushyDetail from "./components/PlushyDetail";
 import CartExtended from "./components/CartExtended";
 import SellerHome from "./components/SellerHome";
+import AdminHome from "./components/AdminHome";
+import Splash from "./components/Splash";
 // Styles
 import { GlobalStyle } from "./GlobalStyle";
 
@@ -33,6 +35,8 @@ const App = () => {
           <Route path="/sellerHome" element={<SellerHome />} />
           <Route path='/:plushyId' element={<PlushyDetail/>} />
           <Route path='/cart' element={<CartExtended />} />
+          <Route path="/adminHome" element={<AdminHome />} />
+          <Route path="/splash" element={<Splash />} />
         </Routes>
       </QueryClientProvider>
       <GlobalStyle />

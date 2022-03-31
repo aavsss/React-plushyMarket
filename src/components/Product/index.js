@@ -12,13 +12,22 @@ const Product = ({
     clickable
 }) => (
     <Wrapper>
-        {clickable && 
-            <Link to={`/${plushyId}`}>
+        {clickable ?
+            <>
+                <Link to={`/${plushyId}`}>
+                    <Image src={imageUrl} alt='alt-thumb' />
+                </Link>
+                <h3>{name}</h3>
+                <h3>${price}</h3>
+            </> 
+            :
+            <>
                 <Image src={imageUrl} alt='alt-thumb' />
-            </Link>
+                <h3>{name}</h3>
+                <h3>${price}</h3>
+            </>
         }
-        <h3>{name}</h3>
-        <h3>${price}</h3>
+ 
     </Wrapper>
 );
 

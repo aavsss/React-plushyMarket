@@ -24,7 +24,8 @@ const Cart = () => {
       <Wrapper>
         <Content>
           <LogoImg src={CartLogo} />
-          {cartCount}
+          {/* {cartCount} */}
+          *
         </Content>
       </Wrapper>
     </Link>

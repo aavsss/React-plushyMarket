@@ -14,3 +14,8 @@ export const uploadPlushy = async(plushyInfo) => {
     const { data } = await axiosConfig.post(`/plushy/upload`, plushyInfo);
     return data;
 }
+
+export const fetchPlushiesOfOwner = async(ownerId) => {
+    const { data } = await axiosConfig.get(`/plushy/owner/${ownerId}`)
+    return data;
+} 
