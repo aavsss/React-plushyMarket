@@ -3,6 +3,8 @@ import React from "react";
 import Grid from "../Grid";
 import Spinner from "../Spinner";
 import Product from "../Product";
+import Button from "../Button";
+import UploadPlushy from "../UploadPlushy";
 // Images
 import NoImage from "../../images/no_image.jpg";
 // Custom hook
@@ -10,33 +12,41 @@ import useSellerHome from "./useSellerHome";
 
 const SellerHome = () => {
     const {
-        data,
-        error,
-        isError,
-        isLoading
+        response,
+        openUploadPlushyDialog,
+        setOpenUploadPlushyDialog
     } = useSellerHome();
 
-    if(isLoading) return (
-        <Spinner />
-    )
+    // const {
+    //     data,
+    //     error,
+    //     isError,
+    //     isLoading
+    // } = response;
 
-    if(isError) return (
-        <div> Something went wrong! {error}</div>
-    )
+    // if (isLoading) return (
+    //     <Spinner />
+    // )
+
+    // if (isError) return (
+    //     <div> Something went wrong! {error}</div>
+    // )
     return (
         <>
-            <Grid header="Your Products">
+            {/* <Grid header="Your Products">
                 {data.map(plushy => (
                     <Product
                         key={plushy.id}
                         plushyId={plushy.id}
                         name={plushy.name}
                         price={plushy.price}
-                        imageUrl={plushy.imageUrl? plushy.imageUrl : NoImage}
+                        imageUrl={plushy.imageUrl ? plushy.imageUrl : NoImage}
                         clickable={false}
                     />
                 ))}
-            </Grid>
+            </Grid> */}
+            <Button text="Upload Plushy" callback={() => setOpenUploadPlushyDialog(true)} />
+            <UploadPlushy open={openUploadPlushyDialog} handleClose={() => setOpenUploadPlushyDialog(false)} />
         </>
     )
 };
