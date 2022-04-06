@@ -17,23 +17,23 @@ const SellerHome = () => {
         setOpenUploadPlushyDialog
     } = useSellerHome();
 
-    // const {
-    //     data,
-    //     error,
-    //     isError,
-    //     isLoading
-    // } = response;
+    const {
+        data,
+        error,
+        isError,
+        isLoading
+    } = response;
 
-    // if (isLoading) return (
-    //     <Spinner />
-    // )
+    if (isLoading) return (
+        <Spinner />
+    )
 
-    // if (isError) return (
-    //     <div> Something went wrong! {error}</div>
-    // )
+    if (isError) return (
+        <div> Something went wrong! {error}</div>
+    )
     return (
         <>
-            {/* <Grid header="Your Products">
+            <Grid header="Your Products">
                 {data.map(plushy => (
                     <Product
                         key={plushy.id}
@@ -44,7 +44,7 @@ const SellerHome = () => {
                         clickable={false}
                     />
                 ))}
-            </Grid> */}
+            </Grid>
             <Button text="Upload Plushy" callback={() => setOpenUploadPlushyDialog(true)} />
             <UploadPlushy open={openUploadPlushyDialog} handleClose={() => setOpenUploadPlushyDialog(false)} />
         </>

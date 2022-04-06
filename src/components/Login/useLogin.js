@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { useMutation } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 
 // api 
 import { loginUser } from "../../api/authenticationApi";
+import { getUserContext } from "../../api/UserApi";
 
 
 const useLogin = () => {
@@ -21,16 +22,32 @@ const useLogin = () => {
     setPassword(password);
   }
 
-  const loginMutation = useMutation(() => loginUser(email, password), 
+  const userContext = useQuery(getUserContext);
+  if (userContext) {
+    navigate('/splash');
+  }
+
+  const loginMutation = useMutation(() => loginUser(email, password),
     {
       onSuccess: () => navigate('/splash')
     }
   );
 
-  return{
-    handleEmailChange, 
+  const handleLogin = () => {
+    loginMutation.mutate();
+  }
+
+  const handleKeyPress = (e) => {
+    if (e.keyCode === 13) {
+      handleLogin();
+    }
+  }
+
+  return {
+    handleEmailChange,
     handlePasswordChange,
-    loginMutation,
+    handleLogin,
+    handleKeyPress,
     openRegister,
     setOpenRegister
   };

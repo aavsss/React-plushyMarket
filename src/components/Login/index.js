@@ -14,24 +14,25 @@ import useLogin from './useLogin';
 const LogIn = () => {
 
   const {
-    handleEmailChange: setEmail, 
+    handleEmailChange: setEmail,
     handlePasswordChange: setPassword,
-    loginMutation,
-    openRegister, 
+    handleLogin,
+    handleKeyPress,
+    openRegister,
     setOpenRegister
   } = useLogin();
-  
+
   return (
     <Wrapper>
-      <Image src={HeroImage} alt="Bear"/>
+      <Image src={HeroImage} alt="Bear" />
       <LoginForm>
         <h3>Email</h3>
-        <TextField onChange={(event) => setEmail(event.target.value)}/>
+        <TextField onChange={(event) => setEmail(event.target.value)} />
         <h3>Password</h3>
-        <TextField type="password" onChange={(event) => setPassword(event.target.value)}/>
-        <Button text='Login' callback={() => loginMutation.mutate()}/>
+        <TextField type="password" onChange={(event) => setPassword(event.target.value)} />
+        <Button text='Login' callback={handleLogin} handleKeyPress={handleKeyPress} />
         <h5>Don't have an account?</h5>
-        <Button text='Register' callback={() => setOpenRegister(true)}/>
+        <Button text='Register' callback={() => setOpenRegister(true)} />
         <Register open={openRegister} handleClose={() => setOpenRegister(false)} />
       </LoginForm>
     </Wrapper>

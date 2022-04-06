@@ -25,7 +25,7 @@ export const uploadPlushy = async (plushyInfo, plushyImage) => {
     return data;
 }
 
-export const fetchPlushiesOfOwner = async (ownerEmail) => {
-    const { data } = await axiosConfig.get(`/plushy/owner/${ownerEmail}`)
+export const fetchPlushiesOfOwner = async () => {
+    const { data } = await axiosConfig.get(`/plushy/owner`)
     return data;
 } 
