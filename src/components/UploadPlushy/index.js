@@ -16,8 +16,10 @@ const UploadPlushy = ({ open, handleClose }) => {
         setName,
         setPrice,
         setQuantity,
-        setDescription
-    } = useUploadPlushy();
+        setDescription,
+        uploadPlushyMutation,
+        setImageFile
+    } = useUploadPlushy(handleClose);
 
     return (
         <>
@@ -60,6 +62,11 @@ const UploadPlushy = ({ open, handleClose }) => {
                         fullWidth
                         onChange={(event) => setDescription(event.target.value)}
                     />
+                    <input type="file" onChange={(event) => { setImageFile(event.target.files[0]) }} />
+                    <DialogActions>
+                        <Button onClick={() => uploadPlushyMutation.mutate()}>Upload</Button>
+                        <Button onClick={handleClose}>Cancel</Button>
+                    </DialogActions>
                 </DialogContent>
             </Dialog>
         </>

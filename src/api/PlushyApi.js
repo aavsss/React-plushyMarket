@@ -10,8 +10,18 @@ export const fetchPlushyById = async (plushyId) => {
     return data;
 }
 
-export const uploadPlushy = async (plushyInfo) => {
-    const { data } = await axiosConfig.post(`/plushy/upload`, plushyInfo);
+export const uploadPlushy = async (plushyInfo, plushyImage) => {
+    const formData = new FormData();
+    formData.append("plushy", plushyInfo);
+    formData.append("file", plushyImage);
+
+    const config = {
+        headers: {
+            'content-type': 'multipart/form-data'
+        }
+    };
+
+    const { data } = await axiosConfig.post(`/plushy/upload`, formData, config);
     return data;
 }
 
