@@ -29,17 +29,12 @@ const useRegister = () => {
     setPassword(password);
   }
 
-  const registerMutation = useMutation(() => registerUser(email, password), 
+  const registerMutation = useMutation(() => registerUser(firstName, lastName, email, password),
     {
       onSuccess: () => navigate('/home')
     }
   );
 
-  const registerAsSellerMutation = useMutation(() => registerSeller(firstName, lastName, email, password), 
-    {
-      onSuccess: () => navigate('/sellerHome')
-    }
-  );
 
   return {
     handleFirstName,
@@ -47,7 +42,6 @@ const useRegister = () => {
     handleEmailChange,
     handlePasswordChange,
     registerMutation,
-    registerAsSellerMutation
   };
 };
 

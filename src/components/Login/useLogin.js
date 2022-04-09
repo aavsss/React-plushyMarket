@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
-
 // api 
 import { loginUser } from "../../api/authenticationApi";
 import { getUserContext } from "../../api/UserApi";
@@ -22,9 +21,11 @@ const useLogin = () => {
     setPassword(password);
   }
 
-  const userContext = useQuery(getUserContext);
-  if (userContext) {
-    navigate('/splash');
+  const userContextResponse = useQuery("userContext", () => getUserContext());
+  const { data, isLoading, isError, error } = userContextResponse;
+  console.log("con", userContextResponse);
+  if (data && data.email) {
+    navigate('/home');
   }
 
   const loginMutation = useMutation(() => loginUser(email, password),
@@ -37,6 +38,7 @@ const useLogin = () => {
     loginMutation.mutate();
   }
 
+  // TODO: not working. fix it
   const handleKeyPress = (e) => {
     if (e.keyCode === 13) {
       handleLogin();

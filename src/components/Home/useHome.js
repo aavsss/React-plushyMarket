@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 // api
-import { getUserContext } from "../api/UserApi";
+import { getUserContext } from "../../api/UserApi";
 
 const useHome = () => {
     const response = useQuery("user", getUserContext);

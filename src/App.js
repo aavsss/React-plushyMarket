@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // Components
 import LogIn from "./components/Login";
 import Register from "./components/Register";
-import Header from "./components/Header";
 import Home from "./components/Home";
 import PlushyDetail from "./components/PlushyDetail";
 import CartExtended from "./components/CartExtended";
@@ -31,7 +30,6 @@ const App = () => {
 
   return (
     <Router>
-      <Header />
       <QueryClientProvider client={queryClient}>
         <UserContext.Provider value={{ userEmail, setUserEmail }} >
           <Routes>

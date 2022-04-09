@@ -22,6 +22,10 @@ export const Content = styled.div`
         }
     }
 
+    h3 {
+        color: var(--white);
+    }
+
 `;
 
 export const LogoImg = styled.img`

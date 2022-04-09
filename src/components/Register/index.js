@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { 
+import {
   Dialog,
-  DialogTitle, 
-  DialogActions, 
-  DialogContent, 
+  DialogTitle,
+  DialogActions,
+  DialogContent,
   DialogContentText,
   TextField,
   Button
@@ -15,11 +15,10 @@ const Register = ({ open, handleClose }) => {
 
   const {
     handleEmailChange: setEmail,
-    handlePasswordChange: setPassword, 
+    handlePasswordChange: setPassword,
     handleFirstName: setFirstName,
     handleLastName: setLastName,
     registerMutation,
-    registerAsSellerMutation
   } = useRegister();
 
   return (
@@ -66,7 +65,6 @@ const Register = ({ open, handleClose }) => {
             onChange={(event) => setPassword(event.target.value)}
           />
           <DialogActions>
-            <Button onClick={() => registerAsSellerMutation.mutate()}>Register as Seller</Button>
             <Button onClick={() => registerMutation.mutate()}> Register </Button>
           </DialogActions>
         </DialogContent>

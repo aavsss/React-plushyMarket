@@ -7,7 +7,7 @@ import { getUserContext } from "../../api/UserApi";
 import { UserContext } from "../../context/userContext";
 
 const useSplash = () => {
-    const response = useQuery('user_role', getUserContext);
+    const response = useQuery('userContext', getUserContext);
 
     const { setUserEmail } = useContext(UserContext);
 
@@ -16,13 +16,13 @@ const useSplash = () => {
     if (response) {
         const { data } = response
         console.log("data", data)
+        if (data && data.appUserRole === "USER") {
+            setUserEmail(data.email);
+            navigate("/home")
+        }
         if (data && data.appUserRole === "ADMIN") {
             setUserEmail(data.email);
             navigate("/adminHome")
-        }
-        if (data && data.appUserRole === "SELLER") {
-            setUserEmail(data.email);
-            navigate("/sellerHome")
         }
     }
 };
