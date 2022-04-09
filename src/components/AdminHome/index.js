@@ -1,9 +1,10 @@
 import React from "react";
+import Button from "../Button";
 
 const AdminHome = () => {
     return (
         <>
-            Admin Home
+            <h1> Hello world </h1>
         </>
     )
 };

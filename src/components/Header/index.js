@@ -25,7 +25,7 @@ const Header = () => {
                     <h3>My</h3>
                 </Link>
                 <Cart />
-                <Button text="Hello" callback={() => logoutMutation.mutate()} />
+                <Button text="Logout" callback={() => logoutMutation.mutate()} />
             </Content>
         </Wrapper>
     )

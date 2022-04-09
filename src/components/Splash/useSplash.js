@@ -5,9 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { getUserContext } from "../../api/UserApi";
 // context
 import { UserContext } from "../../context/userContext";
+// hook
+import useUserContext from "../../hooks/useUserContext";
 
 const useSplash = () => {
-    const response = useQuery('userContext', getUserContext);
+    const response = useUserContext();
 
     const { setUserEmail } = useContext(UserContext);
 

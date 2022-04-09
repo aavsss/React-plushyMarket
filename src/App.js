@@ -11,6 +11,7 @@ import CartExtended from "./components/CartExtended";
 import SellerHome from "./components/SellerHome";
 import AdminHome from "./components/AdminHome";
 import Splash from "./components/Splash";
+import PrivateRoute from "./components/PrivateRoute";
 // Styles
 import { GlobalStyle } from "./GlobalStyle";
 // Context
@@ -35,11 +36,31 @@ const App = () => {
           <Routes>
             <Route path='/' element={<LogIn />} />
             <Route path='/register' element={<Register />} />
-            <Route path='/home' element={<Home />} />
-            <Route path="/sellerHome" element={<SellerHome />} />
-            <Route path='/:plushyId' element={<PlushyDetail />} />
-            <Route path='/cart' element={<CartExtended />} />
-            <Route path="/adminHome" element={<AdminHome />} />
+            <Route path='/home' element={
+              <PrivateRoute>
+                <Home />
+              </PrivateRoute>
+            } />
+            <Route path="/sellerHome" element={
+              <PrivateRoute>
+                <SellerHome />
+              </PrivateRoute>
+            } />
+            <Route path='/:plushyId' element={
+              <PrivateRoute>
+                <PlushyDetail />
+              </PrivateRoute>
+            } />
+            <Route path='/cart' element={
+              <PrivateRoute>
+                <CartExtended />
+              </PrivateRoute>} />
+            <Route path="/adminHome" element={
+              <PrivateRoute>
+                <AdminHome />
+              </PrivateRoute>
+            }
+            />
             <Route path="/splash" element={<Splash />} />
           </Routes>
         </UserContext.Provider>
