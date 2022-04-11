@@ -5,6 +5,7 @@ import Spinner from "../Spinner";
 import Product from "../Product";
 import Button from "../Button";
 import UploadPlushy from "../UploadPlushy";
+import SellerAnalytics from "../SellerAnalytics";
 // Images
 import NoImage from "../../images/no_image.jpg";
 // Custom hook
@@ -33,6 +34,7 @@ const SellerHome = () => {
     )
     return (
         <>
+            <SellerAnalytics uploadPlushyCallback={() => setOpenUploadPlushyDialog(true)} />
             <Grid header="Your Products">
                 {data.map(plushy => (
                     <Product
@@ -45,7 +47,6 @@ const SellerHome = () => {
                     />
                 ))}
             </Grid>
-            <Button text="Upload Plushy" callback={() => setOpenUploadPlushyDialog(true)} />
             <UploadPlushy open={openUploadPlushyDialog} handleClose={() => setOpenUploadPlushyDialog(false)} />
         </>
     )

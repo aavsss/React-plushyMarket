@@ -1,4 +1,4 @@
-import { Navigate, useLocation, Outlet } from "react-router-dom";
+import { Navigate, useLocation  } from "react-router-dom";
 import useUserContext from "../../hooks/useUserContext";
 
 const PrivateRoute = ({ children }) => {
