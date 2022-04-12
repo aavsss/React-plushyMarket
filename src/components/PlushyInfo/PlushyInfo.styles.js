@@ -29,6 +29,7 @@ export const Text = styled.div`
     .price-title {
         display: flex;
         justify-content: flex-start;
+        margin-bottom: 30px;
     }
 
     .price {
@@ -58,7 +59,7 @@ export const StyledTextField = styled(TextField)({
         color: 'green',
     },
     '& .MuiInput-underline:after': {
-    borderBottomColor: 'green',
+        borderBottomColor: 'green',
     },
     '& .MuiOutlinedInput-root': {
         '& fieldset': {
@@ -67,5 +68,5 @@ export const StyledTextField = styled(TextField)({
     },
     '& input': {
         color: 'white'
-    },   
+    },
 });

@@ -8,8 +8,9 @@ const useLogout = () => {
     const logoutMutation = useMutation(() => logoutUser(), {
         onSuccess: () => navigate("/")
     });
+    const logout = () => logoutMutation.mutate();
     return {
-        logoutMutation
+        logout
     };
 };
 

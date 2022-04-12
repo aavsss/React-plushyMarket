@@ -1,30 +1,48 @@
-import { Wrapper, Content, Text } from "./SellerAnalytics.styles";
+import { Wrapper, Content, Text, Item } from "./SellerAnalytics.styles";
 import Button from "../Button";
+import useSellerAnalytics from "./useSellerAnalytics";
 
 const SellerAnalytics = ({ uploadPlushyCallback }) => {
+    const {
+        data: analytics
+    } = useSellerAnalytics();
+
     return (
         <Wrapper>
             <Content>
-                <Text>
-                    <div className="status">
-                        <div>
-                            <div className="number">1</div>
-                            <h3>Active</h3>
+                <Item>
+                    <Text>
+                        <div className="status">
+                            <div>
+                                <div className="number">{analytics.activeProduct}</div>
+                                <h3>Active</h3>
+                            </div>
+                            <div className="space">
+                                <div className="number">{analytics.soldProduct}</div>
+                                <h3>Sold</h3>
+                            </div>
+                            <div className="space">
+                                <div className="number">{analytics.unsoldProduct}</div>
+                                <h3>Unsold</h3>
+                            </div>
                         </div>
-                        <div className="space">
-                            <div className="number">0</div>
-                            <h3>Sold</h3>
+                    </Text>
+                </Item>
+                <Item>
+                    <Text>
+                        <div className="status">
+                            <div>
+                                <div className="number">${analytics.totalMoneyEarned}</div>
+                                <h3>Total</h3>
+                            </div>
                         </div>
-                        <div className="space">
-                            <div className="number">0</div>
-                            <h3>Unsold</h3>
-                        </div>
+                    </Text>
+                </Item>
+                <Item>
+                    <div className="centerButton">
+                        <Button text="Upload Plushy" callback={uploadPlushyCallback} />
                     </div>
-                </Text>
-                <div>
-                    <h3>$0</h3>
-                </div>
-                <Button text="Upload Plushy" callback={uploadPlushyCallback} />
+                </Item>
             </Content>
         </Wrapper>
     )

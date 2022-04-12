@@ -1,27 +1,22 @@
-import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux';
-import { selectCart, fetchInitialCartNumber } from "../../features/cart/cartSlice";
+import { useState } from 'react';
 // hooks
 import useLogout from "../../hooks/useLogout";
-import { useEffect } from "react";
+import useCartCount from "../../hooks/useCartCount";
+import useNavigation from "../../hooks/useNavigation";
 
 const useNavbar = () => {
-    const cartCount = useSelector(selectCart);
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(fetchInitialCartNumber());
-    }, [dispatch]);
+    const { cartCount } = useCartCount();
 
-    const navigate = useNavigate();
-    const navigateToMyMarket = () => navigate('/sellerHome');
-    const navigateToCart = () => navigate('/cart');
+    const { navigateTo } = useNavigation();
+    const navigateToMyMarket = () => navigateTo('/sellerHome');
+    const navigateToCart = () => navigateTo('/cart');
 
-    const { logoutMutation } = useLogout();
+    const { logout } = useLogout();
 
     return {
         navigateToMyMarket,
         navigateToCart,
-        logoutMutation,
+        logout,
         cartCount
     }
 };

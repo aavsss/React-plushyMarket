@@ -11,9 +11,9 @@ export const Wrapper = styled.div`
 
 export const Content = styled.div`
     display: flex;
+    padding: 16px;
     justify-content: space-evenly;
     align-items: center;
-    padding: 16px;
 `;
 
 export const Text = styled.div`
@@ -21,7 +21,7 @@ export const Text = styled.div`
 
     .status {
         display: flex;
-        justify-content: flex-start;
+        justify-content: space-evenly;
     }
 
     .number {
@@ -31,10 +31,20 @@ export const Text = styled.div`
     }
 
     .space {
-        margin: 0 0 0 40px;
+        margin: 0 0 0 0px;
     }
 `;
 
-export const Type = styled.h3`
-    margin-left: 20px;
+export const Item = styled.div`
+    flex: 1;
+
+    .center {
+        margin: auto;
+        width: 0%;
+    }
+
+    .centerButton {
+        margin: auto;
+        width: 30%;
+    }
 `;

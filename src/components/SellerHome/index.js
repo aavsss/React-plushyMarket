@@ -3,7 +3,7 @@ import React from "react";
 import Grid from "../Grid";
 import Spinner from "../Spinner";
 import Product from "../Product";
-import Button from "../Button";
+import Navbar from "../Navbar";
 import UploadPlushy from "../UploadPlushy";
 import SellerAnalytics from "../SellerAnalytics";
 // Images
@@ -34,6 +34,7 @@ const SellerHome = () => {
     )
     return (
         <>
+            <Navbar />
             <SellerAnalytics uploadPlushyCallback={() => setOpenUploadPlushyDialog(true)} />
             <Grid header="Your Products">
                 {data.map(plushy => (

@@ -12,7 +12,6 @@ export const Wrapper = styled.button`
     font-size: var(--fontMed);
     transition: all 0.3s;
     outline: none;
-    margin-top: 30px;
     cursor: pointer;
 
     :hover {
