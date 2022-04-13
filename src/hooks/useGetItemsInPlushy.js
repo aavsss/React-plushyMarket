@@ -2,8 +2,8 @@ import { useQuery } from "react-query";
 // api 
 import { getPlushiesInCart } from "../api/CartApi";
 
-const useGetItemsInPlushy = () => {
+const useGetItemsInCart = () => {
     return useQuery("itemsInCart", () => getPlushiesInCart(1));
 }
 
-export default useGetItemsInPlushy;
+export default useGetItemsInCart;

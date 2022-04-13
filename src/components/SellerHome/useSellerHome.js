@@ -5,11 +5,16 @@ import { fetchPlushiesOfOwner } from "../../api/PlushyApi";
 
 const useSellerHome = () => {
     const [openUploadPlushyDialog, setOpenUploadPlushyDialog] = useState(false);
+    const [openEditPlushyDialog, setOpenEditPlushyDialog] = useState(false);
+
     const response = useQuery('seller_plushies', () => fetchPlushiesOfOwner());
+
     return {
         response,
         openUploadPlushyDialog,
-        setOpenUploadPlushyDialog
+        openEditPlushyDialog,
+        setOpenUploadPlushyDialog,
+        setOpenEditPlushyDialog
     };
 
 };

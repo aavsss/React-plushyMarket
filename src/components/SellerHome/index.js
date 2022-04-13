@@ -6,6 +6,8 @@ import Product from "../Product";
 import Navbar from "../Navbar";
 import UploadPlushy from "../UploadPlushy";
 import SellerAnalytics from "../SellerAnalytics";
+import EditPlushy from "../EditPlushy";
+import SellerProducts from "../SellerProducts";
 // Images
 import NoImage from "../../images/no_image.jpg";
 // Custom hook
@@ -15,7 +17,9 @@ const SellerHome = () => {
     const {
         response,
         openUploadPlushyDialog,
-        setOpenUploadPlushyDialog
+        openEditPlushyDialog,
+        setOpenUploadPlushyDialog,
+        setOpenEditPlushyDialog
     } = useSellerHome();
 
     const {
@@ -36,18 +40,20 @@ const SellerHome = () => {
         <>
             <Navbar />
             <SellerAnalytics uploadPlushyCallback={() => setOpenUploadPlushyDialog(true)} />
-            <Grid header="Your Products">
-                {data.map(plushy => (
-                    <Product
+            <h2>Your Products</h2>
+            {
+                data.map(plushy => (
+                    <SellerProducts
                         key={plushy.id}
-                        plushyId={plushy.id}
                         name={plushy.name}
+                        description={plushy.description}
+                        quantity={plushy.quantity}
                         price={plushy.price}
-                        imageUrl={plushy.imageUrl ? plushy.imageUrl : NoImage}
-                        clickable={false}
+                        openEditDialog={() => setOpenEditPlushyDialog(true)}
                     />
-                ))}
-            </Grid>
+                ))
+            }
+            <EditPlushy open={openEditPlushyDialog} handleClose={() => setOpenEditPlushyDialog(false)} />
             <UploadPlushy open={openUploadPlushyDialog} handleClose={() => setOpenUploadPlushyDialog(false)} />
         </>
     )
