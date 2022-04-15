@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 // Components
 import CartHolder from '../CartHolder';
 import Navbar from '../Navbar';

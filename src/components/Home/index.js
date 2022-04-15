@@ -7,8 +7,8 @@ import HeroImage from "../HeroImage";
 import Grid from "../Grid";
 import Product from "../Product";
 import Spinner from "../Spinner";
-import Header from "../Header";
 import Navbar from "../Navbar";
+import Carousel from "../Carousel";
 
 // hooks
 import usePlushiesFetch from "../../hooks/usePlushiesFetch";
@@ -33,11 +33,12 @@ const Home = () => {
     return (
         <>
             <Navbar />
-            <HeroImage
+            <Carousel items={data} />
+            {/* <HeroImage
                 image={data ? data[0].imageUrl : HeroImg}
                 title={data ? data[0].name : "Name"}
                 text={data ? data[0].description : "Description"}
-            />
+            /> */}
             <Grid header="Plushies">
                 {data.map(plushy => (
                     <Product

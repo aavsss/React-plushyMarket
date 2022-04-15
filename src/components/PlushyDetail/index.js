@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 // Components
 import Spinner from '../Spinner';
 import PlushyInfo from '../PlushyInfo';
+import Navbar from '../Navbar';
 // hook 
 import { usePlushyFetchById } from '../../hooks/usePlushyFetchById';
 
@@ -26,9 +27,13 @@ const PlushyDetail = () => {
 
 
     return (
-        <PlushyInfo
-            plushy={data}
-        />
+        <>
+            <Navbar />
+            <PlushyInfo
+                plushy={data}
+            />
+        </>
+
     );
 };
 
