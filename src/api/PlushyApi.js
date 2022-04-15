@@ -25,6 +25,12 @@ export const uploadPlushy = async (plushyInfo, plushyImage) => {
     return data;
 }
 
+export const editPlushy = async (plushyInfo, plushyImage) => {
+    return {
+        data: "Temporary value. Make changes in db as required"
+    }
+}
+
 export const fetchPlushiesOfOwner = async () => {
     const { data } = await axiosConfig.get(`/plushy/owner`)
     return data;

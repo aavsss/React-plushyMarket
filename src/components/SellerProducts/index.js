@@ -1,13 +1,17 @@
 import React from "react";
-import { Wrapper, Overview } from "./SellerProducts.styles";
+import { Wrapper, Overview, Image } from "./SellerProducts.styles";
 // image
 import Bear from "../../images/autumn.png";
 
-// TODO: Decouple items here?!? or not?!?
-const SellerProducts = ({ name, description, quantity, price, openEditDialog }) => {
+
+const SellerProducts = ({ name, description, quantity, price, openEditDialog, img }) => {
     return (
-        <Wrapper onClick={openEditDialog}>
-            <img src={Bear} alt={name} height={200} width={200} />
+        <Wrapper>
+            <Image
+                src={img ? img : Bear}
+                alt={name}
+                onClick={openEditDialog}
+            />
             <div>
                 <h1>{name}</h1>
                 <Overview>{description}</Overview>

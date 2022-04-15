@@ -8,8 +8,8 @@ import UploadPlushy from "../UploadPlushy";
 import SellerAnalytics from "../SellerAnalytics";
 import EditPlushy from "../EditPlushy";
 import SellerProducts from "../SellerProducts";
-// Images
-import NoImage from "../../images/no_image.jpg";
+// Components
+import { Wrapper } from "./SellerHome.styles";
 // Custom hook
 import useSellerHome from "./useSellerHome";
 
@@ -19,7 +19,9 @@ const SellerHome = () => {
         openUploadPlushyDialog,
         openEditPlushyDialog,
         setOpenUploadPlushyDialog,
-        setOpenEditPlushyDialog
+        setOpenEditPlushyDialog,
+        plushyToEdit,
+        setPlushyToEdit
     } = useSellerHome();
 
     const {
@@ -39,21 +41,28 @@ const SellerHome = () => {
     return (
         <>
             <Navbar />
-            <SellerAnalytics uploadPlushyCallback={() => setOpenUploadPlushyDialog(true)} />
-            <h2>Your Products</h2>
-            {
-                data.map(plushy => (
-                    <SellerProducts
-                        key={plushy.id}
-                        name={plushy.name}
-                        description={plushy.description}
-                        quantity={plushy.quantity}
-                        price={plushy.price}
-                        openEditDialog={() => setOpenEditPlushyDialog(true)}
-                    />
-                ))
-            }
-            <EditPlushy open={openEditPlushyDialog} handleClose={() => setOpenEditPlushyDialog(false)} />
+            <Wrapper>
+                <SellerAnalytics uploadPlushyCallback={() => setOpenUploadPlushyDialog(true)} />
+                <h2>Your Products</h2>
+                {
+                    data.map(plushy => (
+                        <SellerProducts
+                            key={plushy.id}
+                            name={plushy.name}
+                            description={plushy.description}
+                            quantity={plushy.quantity}
+                            price={plushy.price}
+                            img={plushy.imageUrl}
+                            openEditDialog={() => {
+                                setOpenEditPlushyDialog(true)
+                                setPlushyToEdit(plushy)
+                            }}
+                        />
+                    ))
+                }
+            </Wrapper>
+
+            <EditPlushy item={plushyToEdit} open={openEditPlushyDialog} handleClose={() => setOpenEditPlushyDialog(false)} />
             <UploadPlushy open={openUploadPlushyDialog} handleClose={() => setOpenUploadPlushyDialog(false)} />
         </>
     )

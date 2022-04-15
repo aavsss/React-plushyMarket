@@ -5,7 +5,6 @@ export const Wrapper = styled.div`
     background-size: 100% cover;
     height: 100px;
     position: relative;
-    margin: 0px 24px;
     border-radius: 30px;
 `;
 
