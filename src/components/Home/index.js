@@ -34,11 +34,6 @@ const Home = () => {
         <>
             <Navbar />
             <Carousel items={data} />
-            {/* <HeroImage
-                image={data ? data[0].imageUrl : HeroImg}
-                title={data ? data[0].name : "Name"}
-                text={data ? data[0].description : "Description"}
-            /> */}
             <Grid header="Plushies">
                 {data.map(plushy => (
                     <Product

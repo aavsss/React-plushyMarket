@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { AppBar, Toolbar, IconButton, MenuItem, Menu, Typography, Badge } from '@material-ui/core';
+import React from 'react';
+import { Toolbar, IconButton, Typography, Badge, Button } from '@material-ui/core';
 import { ShoppingCart } from '@material-ui/icons';
 import useStyles from './Navbar.styles';
 // Logo
@@ -8,28 +8,25 @@ import HomeLogo from '../../images/autumn.png';
 import useNavbar from './useNavbar';
 // components
 import MobileMenu from '../MobileMenu';
+import UserMenu from '../UserMenu';
 
 const Navbar = () => {
     const classes = useStyles();
 
     const {
-        navigateToMyMarket,
         navigateToCart,
         navigateToHome,
-        logout,
         cartCount
     } = useNavbar();
 
     return (
         <>
-            {/* <AppBar position="fixed" className={classes.AppBar} color="inherit"> */}
             <Toolbar>
                 <Typography variant="h6" className={classes.title} color="inherit" onClick={navigateToHome}>
                     <img src={HomeLogo} alt="Bear" height="25px" className={classes.image} /> Plushy Market
                 </Typography>
                 <div className={classes.navBar} >
-                    <h2 className={classes.navBarItem} onClick={navigateToMyMarket}>My Market</h2>
-                    <h2 className={classes.navBarItem} onClick={logout}>Logout</h2>
+                    <UserMenu />
                 </div>
                 <div className={classes.button}>
                     <IconButton aria-label="Show cart items" color="inherit">
@@ -39,7 +36,6 @@ const Navbar = () => {
                     </IconButton>
                 </div>
             </Toolbar>
-            {/* </AppBar> */}
             <MobileMenu cartCount={cartCount} />
         </>
     )
