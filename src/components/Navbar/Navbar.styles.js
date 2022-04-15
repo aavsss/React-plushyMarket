@@ -16,6 +16,7 @@ export default makeStyles((theme) => ({
         alignItems: 'center',
         display: 'flex',
         textDecoration: 'none',
+        cursor: 'pointer',
     },
     image: {
         marginRight: '10px',

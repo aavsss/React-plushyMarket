@@ -15,7 +15,7 @@ const useUploadPlushy = (handleClose) => {
             "name": name,
             "price": price,
             "quantity": quantity,
-            "description": description
+            "description": description,
         }), imageFile),
         {
             onSuccess: handleClose

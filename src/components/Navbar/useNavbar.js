@@ -10,12 +10,14 @@ const useNavbar = () => {
     const { navigateTo } = useNavigation();
     const navigateToMyMarket = () => navigateTo('/sellerHome');
     const navigateToCart = () => navigateTo('/cart');
+    const navigateToHome = () => navigateTo('/home');
 
     const { logout } = useLogout();
 
     return {
         navigateToMyMarket,
         navigateToCart,
+        navigateToHome,
         logout,
         cartCount
     }

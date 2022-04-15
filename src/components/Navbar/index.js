@@ -12,13 +12,19 @@ import MobileMenu from '../MobileMenu';
 const Navbar = () => {
     const classes = useStyles();
 
-    const { navigateToMyMarket, navigateToCart, logout, cartCount } = useNavbar();
+    const {
+        navigateToMyMarket,
+        navigateToCart,
+        navigateToHome,
+        logout,
+        cartCount
+    } = useNavbar();
 
     return (
         <>
             {/* <AppBar position="fixed" className={classes.AppBar} color="inherit"> */}
             <Toolbar>
-                <Typography variant="h6" className={classes.title} color="inherit">
+                <Typography variant="h6" className={classes.title} color="inherit" onClick={navigateToHome}>
                     <img src={HomeLogo} alt="Bear" height="25px" className={classes.image} /> Plushy Market
                 </Typography>
                 <div className={classes.navBar} >
