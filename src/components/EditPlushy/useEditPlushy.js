@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { useMutation } from 'react-query';
+import { useMutation, useQueryClient } from 'react-query';
 // api
 import { editPlushy } from '../../api/PlushyApi';
 
-const useEditPlushy = (handleClose) => {
+const useEditPlushy = (item, handleClose) => {
     const [name, setName] = useState("");
     const [price, setPrice] = useState(-1);
     const [quantity, setQuantity] = useState(-1);
@@ -22,7 +22,24 @@ const useEditPlushy = (handleClose) => {
         return () => URL.revokeObjectURL(objectUrl);
     }, [imageFile]);
 
+    useEffect(() => {
+        if (item) {
+            setName(item.name);
+            setPrice(item.price);
+            setQuantity(item.quantity);
+            setDescription(item.description);
+        }
+    }, [item]);
+
+    const queryClient = useQueryClient();
+
+    const handleSuccess = () => {
+        handleClose();
+        queryClient.invalidateQueries('seller_plushies');
+    }
+
     const uploadPlushyMutation = useMutation(() => editPlushy(
+        item.id,
         JSON.stringify({
             "name": name,
             "price": price,
@@ -30,7 +47,7 @@ const useEditPlushy = (handleClose) => {
             "description": description
         }), imageFile),
         {
-            onSuccess: handleClose
+            onSuccess: handleSuccess
         }
     );
 

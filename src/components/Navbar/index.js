@@ -1,5 +1,5 @@
 import React from 'react';
-import { Toolbar, IconButton, Typography, Badge, Button } from '@material-ui/core';
+import { Toolbar, IconButton, Typography, Badge } from '@material-ui/core';
 import { ShoppingCart } from '@material-ui/icons';
 import useStyles from './Navbar.styles';
 // Logo

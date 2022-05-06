@@ -1,15 +1,12 @@
+import { useQuery } from "react-query";
+// api
+import { getSellingAnalytics } from "../api/UserApi";
+
+
 const useAnalytics = () => {
-    // TODO: This repo layer will have access to its required API
-    const mockData = {
-        data: {
-            activeProduct: 1,
-            soldProduct: 0,
-            unsoldProduct: 0,
-            totalMoneyEarned: 0
-        },
-        isLoading: false
-    };
-    return mockData;
+    const sellingAnalyticsResponse = useQuery('selling-analytics', () => getSellingAnalytics());
+
+    return sellingAnalyticsResponse;
 };
 
 export default useAnalytics;

@@ -24,7 +24,7 @@ const EditPlushy = ({ item, open, handleClose }) => {
         setImageFile,
         imageFile,
         preview
-    } = useEditPlushy(handleClose);
+    } = useEditPlushy(item, handleClose);
 
     const classes = useStyles();
 

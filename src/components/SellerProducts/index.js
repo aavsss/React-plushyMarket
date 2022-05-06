@@ -17,7 +17,7 @@ const SellerProducts = ({ name, description, quantity, price, openEditDialog, im
                 <Overview>{description}</Overview>
                 <Overview>Quantity available: {quantity}</Overview>
                 <Overview>Quantity sold: 0</Overview>
-                <Overview>Profit: ${price}</Overview>
+                <Overview>Price: ${price}</Overview>
             </div>
         </Wrapper>
     )

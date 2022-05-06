@@ -25,10 +25,19 @@ export const uploadPlushy = async (plushyInfo, plushyImage) => {
     return data;
 }
 
-export const editPlushy = async (plushyInfo, plushyImage) => {
-    return {
-        data: "Temporary value. Make changes in db as required"
+export const editPlushy = async (id, plushyInfo, plushyImage) => {
+    const formData = new FormData();
+    formData.append("plushy", plushyInfo);
+    formData.append("file", plushyImage);
+
+    const config = {
+        headers: {
+            'content-type': 'multipart/form-data'
+        }
     }
+
+    const { data } = await axiosConfig.put(`/plushy/update/${id}`, formData, config);
+    return data;
 }
 
 export const fetchPlushiesOfOwner = async () => {
