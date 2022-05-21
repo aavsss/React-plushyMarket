@@ -17,14 +17,13 @@ const useSplash = () => {
 
     if (response) {
         const { data } = response
-        console.log("data", data)
         if (data && data.appUserRole === "USER") {
             setUserEmail(data.email);
-            navigate("/home")
+            navigate("/home");
         }
         if (data && data.appUserRole === "ADMIN") {
             setUserEmail(data.email);
-            navigate("/adminHome")
+            navigate("/adminHome");
         }
     }
 };

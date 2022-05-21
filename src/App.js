@@ -9,7 +9,7 @@ import Home from "./components/Home";
 import PlushyDetail from "./components/PlushyDetail";
 import CartExtended from "./components/CartExtended";
 import SellerHome from "./components/SellerHome";
-import AdminHome from "./components/AdminHome";
+import AdminHome from "./pages/AdminHome";
 import Splash from "./components/Splash";
 import PrivateRoute from "./components/PrivateRoute";
 // Styles

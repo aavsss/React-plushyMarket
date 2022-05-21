@@ -9,3 +9,8 @@ export const getSellingAnalytics = async () => {
     const { data } = await axiosConfig.get('/user/selling-analytics');
     return data;
 }
+
+export const getTotalNumberOfUsers = async() => {
+    const { data } = await axiosConfig.get('/user/totalNum');
+    return data;
+}
