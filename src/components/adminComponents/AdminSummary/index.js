@@ -19,7 +19,7 @@ const AdminSummary = () => {
             <div className='adminItems'>
                 <span className='adminTitle'>Num of Plushies</span>
                 <div className='container'>
-                    <span className='amount'>{plushies.length || "N/A"}</span>
+                    <span className='amount'>{plushies? plushies.length : "N/A"}</span>
                 </div>
             </div>
         </div>

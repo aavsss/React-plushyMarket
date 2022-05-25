@@ -7,9 +7,13 @@ import Spinner from "../../components/Spinner";
 // data
 import { chartData } from "../../helper/dummyData";
 // hook
+import useAdminChart from "./useAdminChart";
 
 
 const AdminHome = () => {
+
+    const { revenuesResponse } = useAdminChart();
+    const { data: revenues } = revenuesResponse;
 
     return (
         <>
@@ -17,8 +21,8 @@ const AdminHome = () => {
             <AdminSummary />
             <AdminChart 
                 title="Revenue"
-                data={chartData}
-                dataKey="revenue"
+                data={revenues || chartData}
+                dataKey="earned"
                 grid
             />
         </>

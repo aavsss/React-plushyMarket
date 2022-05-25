@@ -10,6 +10,7 @@ import useUserContext from "../../hooks/useUserContext";
 
 const useSplash = () => {
     const response = useUserContext();
+    console.log("re", response)
 
     const { setUserEmail } = useContext(UserContext);
 

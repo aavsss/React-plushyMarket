@@ -2,6 +2,7 @@
   "name": "plushy-market-frontend",
   "version": "0.1.0",
   "private": true,
+  "proxy":"http://ec2-3-19-75-159.us-east-2.compute.amazonaws.com",
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
