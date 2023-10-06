@@ -60,6 +60,7 @@ const PlushyInfo = ({ plushy }) => {
                         message="Max quantity reached"
                         autoHideDuration={3000}
                     />
+                    Show similar
                 </Text>
             </Content>
         </Wrapper>

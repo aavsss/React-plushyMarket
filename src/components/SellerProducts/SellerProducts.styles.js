@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
     max-width: 100%;
     background: rgba(0, 0, 0, 0.7);
     border-radius: 20px;
+    margin-bottom: 10px;
 
     @media screen and (max-width: 768px) {
         display: block;

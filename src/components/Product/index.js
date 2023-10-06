@@ -35,7 +35,8 @@ Product.propTypes = {
     plushyId: PropTypes.number,
     name: PropTypes.string, 
     price: PropTypes.number,
-    imageUrl: PropTypes.string
+    imageUrl: PropTypes.string,
+    clickable: PropTypes.bool
 }
 
 export default Product;
