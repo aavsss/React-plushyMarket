@@ -44,3 +44,8 @@ export const fetchPlushiesOfOwner = async () => {
     const { data } = await axiosConfig.get(`/plushy/owner`)
     return data;
 } 
+
+export const fetchSimilarPlushies = async (plushyId) => {
+    const { data } = await axiosConfig.get(`/plushy/${plushyId}/similar_plushies`);
+    return data;
+}

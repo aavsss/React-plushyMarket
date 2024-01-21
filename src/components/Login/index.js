@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 // Mui components
 import { TextField } from '@mui/material';
 // Custom components
-import { LoginForm, Wrapper, Image } from './Login.styles';
+import { LoginForm, Wrapper, Image, Gap } from './Login.styles';
 import Button from '../Button';
 import Register from '../Register';
 // Images
@@ -30,6 +29,7 @@ const LogIn = () => {
         <TextField onChange={(event) => setEmail(event.target.value)} />
         <h3>Password</h3>
         <TextField type="password" onChange={(event) => setPassword(event.target.value)} />
+        <Gap />
         <Button text='Login' callback={handleLogin} handleKeyPress={handleKeyPress} />
         <h5>Don't have an account?</h5>
         <Button text='Register' callback={() => setOpenRegister(true)} />

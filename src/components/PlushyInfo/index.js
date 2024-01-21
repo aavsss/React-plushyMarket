@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types"
 // Components
 import Thumb from "../Thumb";
 import Button from "../Button";
 import { Snackbar } from "@mui/material";
+import SimilarPlushies from "../SimilarPlushies";
 // Image
 import NoImage from '../../images/no_image.jpg';
 // Styles
 import { Wrapper, Content, Text, StyledTextField } from "./PlushyInfo.styles";
 // Hook
 import usePlushyInfo from "./usePlushyInfo";
+import { useLocation } from "react-router-dom";
 
 
 const PlushyInfo = ({ plushy }) => {
@@ -21,6 +23,8 @@ const PlushyInfo = ({ plushy }) => {
         handleChangeInQuantity,
         dispatchAddItemNumToCart
     } = usePlushyInfo(plushy);
+
+    const {pathname} = useLocation();
 
     return (
         <Wrapper>
@@ -60,7 +64,7 @@ const PlushyInfo = ({ plushy }) => {
                         message="Max quantity reached"
                         autoHideDuration={3000}
                     />
-                    Show similar
+                    <SimilarPlushies id={pathname.substring(1)} />
                 </Text>
             </Content>
         </Wrapper>

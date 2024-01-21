@@ -14,3 +14,7 @@ export const Image = styled.img`
 export const LoginForm = styled.div`
   margin-left: 20px;
 `;
+
+export const Gap = styled.div`
+  margin-top: 20px;
+`;
